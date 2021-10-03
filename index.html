@@ -194,7 +194,8 @@
 				for (let i = 0; i < maxPredictions; i++) {
 					var classPrediction = "";
 					if(prediction[i].probability >= 0.3) {
-						if(prediction[i].className == 'PET BOTTLE'|| prediction[i].className == ‘플라스틱 컵’ || prediction[i].className == ‘플라스틱 용기’){
+						classPrediction = '<div style="margin:10px;">'+ prediction[i].className + ' : ' + prediction[i].probability.toFixed(4)*100.0 + '%</div><div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: ' + prediction[i].probability.toFixed(4)*100 + '%" aria-valuenow="'+ prediction[i].probability.toFixed(4)*100+'" aria-valuemin="0" aria-valuemax="100"></div></div><br><br>';
+					if(prediction[i].className == 'PET BOTTLE'|| prediction[i].className == ‘플라스틱 컵’ || prediction[i].className == ‘플라스틱 용기’){
   alert("페트류 처리방법 \n\n 1.뚜껑을 제거한 후, 내용물을 비우고 물로 한번 헹구어 배출한다. \n 2. 가능한 압착하여 부피를 축소한다. \n 3. 용기표면에 재질분류 표시 1,2,3,4,5,6번으로 표시된 플라스틱 제품에 한하여 배출한다.") 
 }
 else if(prediction[i].className === '의류'){
@@ -228,9 +229,7 @@ else if(prediction[i].className === '마스크'){
 alert("종이류 처리방법 \n\n 1. 마스크의 줄을 끊고 종량제봉투에 배출한다. ")
 }
 else if(prediction[i].className === '나무 막대'){
-alert("종이류 처리방법 \n\n 1. 목재에 부착된 이물질을 제거하고 재활용 분리배출을 한다. ")
-}
-						classPrediction = '<div style="margin:10px;">'+ prediction[i].className + ' : ' + prediction[i].probability.toFixed(4)*100.0 + '%</div><div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: ' + prediction[i].probability.toFixed(4)*100 + '%" aria-valuenow="'+ prediction[i].probability.toFixed(4)*100+'" aria-valuemin="0" aria-valuemax="100"></div></div><br><br>';
+alert("종이류 처리방법 \n\n 1. 목재에 부착된 이물질을 제거하고 재활용 분리배출을 한다. ")}
 					}
 					
 					labelContainer.childNodes[i].innerHTML = classPrediction;
